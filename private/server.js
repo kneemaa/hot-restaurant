@@ -1,8 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 const PORT = 3000;
 const queryPath = "https://localhost:"
+
+app.use(express.static(path.join(__dirname,'../public')));
 
 let openTables = [
   {name: "tom",
@@ -36,15 +39,15 @@ let waitList = [{
 }];
 
 app.get('/', (req,res) => {
-	res.sendFile(path.join(__dirname,"home.html"));
+	res.sendFile(path.join(__dirname,"../public/home.html"));
 });
 
-app.get('/view-tables', (req,res) => {
-	res.sendFile(path.join(__dirname,"view-tables.html"));
+app.get('/tables', (req,res) => {
+	res.sendFile(path.join(__dirname,"../public/view-tables.html"));
 });
 
-app.get('/make-reservations',(req,res) => {
-	res.sendFile(path.join(__dirname,"make-reservations.html"));
+app.get('/makeReservation',(req,res) => {
+	res.sendFile(path.join(__dirname,"../public/make-reservation.html"));
 });
 
 app.get('/api/tables', (req,res) => {
