@@ -42,6 +42,10 @@ app.get('/view-tables', (req,res) => {
 	res.sendFile(path.join(__dirname,"view-tables.html"));
 });
 
+app.get('/make-reservations',(req,res) => {
+	res.sendFile(path.join(__dirname,"make-reservations.html"));
+});
+
 app.get('/api/tables', (req,res) => {
 	res.json(openTables);
 });
